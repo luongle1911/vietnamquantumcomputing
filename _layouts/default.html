@@ -8,6 +8,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon/favicon.png" type="image/x-icon">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -75,17 +76,32 @@
             color: #718096; /* Tailwind gray-600 */
         }
     </style>
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    <script type="text/javascript">
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
     </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script id="dsq-count-scr" src="//quantumutiverse.disqus.com/count.js" async></script>
 </head>
 <body class="antialiased">
     <!-- Header Section -->
     <header class="header-bg text-white py-6 rounded-b-lg shadow-md">
         <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-            <h1 class="text-3xl font-bold mb-4 md:mb-0">
-                <a href="{{ site.baseurl }}/" class="hover:text-gray-300 transition duration-300">{{ site.title }}</a>
-            </h1>
+            <div class="flex items-center space-x-4">
+                <img src="{{ site.baseurl }}/assets/images/logo/qmlogo.png" alt="Site Logo" class="h-24 w-24 rounded-full">
+                <h1 class="text-3xl font-bold mb-4 md:mb-0">
+                    <a href="{{ site.baseurl }}/" class="hover:text-gray-300 transition duration-300">{{ site.title }}</a>
+                </h1>
+            </div>
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="{{ site.baseurl }}/" class="hover:text-gray-300 transition duration-300 text-lg">Home</a></li>

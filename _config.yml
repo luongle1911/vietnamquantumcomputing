@@ -10,6 +10,8 @@ url: "https://luongle1911.github.io" # Your GitHub Pages URL
 markdown: kramdown
 kramdown:
   math_engine: mathjax # This tells kramdown to use MathJax for math rendering
+  math_engine_opts:
+    preview: false # Optional: Disable MathJax previews if unnecessary
   # Optional: Some complex setups might need this if you face issues with MathJax v3:
   # math_engine_opts:
   #   chain_jax: false
@@ -17,6 +19,9 @@ theme: minima # You can choose other themes or create your own
 plugins:
   - jekyll-feed
   - jekyll-seo-tag # Recommended for SEO
+
+paginate: 3 # Number of posts per page
+paginate_path: "/page/:num/" # URL structure for paginated pages
 
 # Exclude from processing.
 # The following items will not be processed, by Jekyll.
