@@ -1,0 +1,27 @@
+# _config.yml
+title: VietNam Quantum Computing Blog
+description: Explore the Quantum World.
+author: luongle1911
+email: lephuluong1911@gmail.com
+baseurl: "" # If your repo is 'science-blog', otherwise leave empty for user/org sites
+url: "https://luongle1911.github.io" # Your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+kramdown:
+  math_engine: mathjax # This tells kramdown to use MathJax for math rendering
+  # Optional: Some complex setups might need this if you face issues with MathJax v3:
+  # math_engine_opts:
+  #   chain_jax: false
+theme: minima # You can choose other themes or create your own
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag # Recommended for SEO
+
+# Exclude from processing.
+# The following items will not be processed, by Jekyll.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
