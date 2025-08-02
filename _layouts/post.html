@@ -1,92 +1,149 @@
 <!-- _layouts/post.html -->
-
 <head>
-    <script type="text/javascript">
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-            }
-        };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+  <!-- ...existing code... -->
 </head>
+
 <article class="blog-post p-8 mb-8 rounded-lg">
-    <h3 class="text-2xl font-semibold text-gray-900 mb-4">{{ page.title }}</h3>
-    <div class="mt-2 text-sm text-gray-500">
-        Published on: {{ page.date | date: "%B %-d, %Y" }} | Category: {{ page.category }}
-    </div>
-    <!-- Abstract Section -->
-    {% if page.abstract %}
-    <section class="mt-6">
-        <h4 class="text-lg font-semibold text-gray-800">Abstract</h4>
-        <p class="text-gray-700">{{ page.abstract }}</p>
-    </section>
-    {% endif %}
-    <!-- Keywords Section -->
-    {% if page.keywords %}
-    <section class="mt-6">
-        <h4 class="text-lg font-semibold text-gray-800">Keywords</h4>
-        <ul class="list-disc list-inside text-gray-700">
-            {% for keyword in page.keywords %}
-            <li>{{ keyword }}</li>
-            {% endfor %}
+  <!-- MathJax setup for correct inline math rendering -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+<article class="blog-post p-8 mb-8 rounded-lg">
+  <!-- Home link -->
+  <div class="taskbar" style="background:#1a202c; padding:0.75em 1em; border-radius:0.5em; margin-bottom:1.5em; display:flex; align-items:center; justify-content:flex-start; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+    <a href="{{ site.baseurl }}/" class="home-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:1.2em; height:1.2em;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Home
+    </a>
+    <style>
+      .home-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        background: #1a202c;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1em;
+        padding: 0.5em 1.25em;
+        border-radius: 0.375em;
+        box-shadow: 0 1px 4px rgba(37,99,235,0.12);
+        transition: background 0.2s, color 0.2s;
+      }
+      .home-btn:hover {
+        background: #fff;
+        color: #1a202c;
+      }
+      .home-btn:hover svg {
+        color: #1a202c;
+      }
+    </style>
+  </div>
+
+  <div style="display:flex; gap:2.5%;">
+    <!-- Sidebar -->
+    <aside style="width:22.5%;…">
+      <div class="bg-gray-100 rounded-lg p-4 sticky top-8">
+        <h4>Other Posts</h4>
+        <ul>
+          {% for post in site.posts %}
+            {% if post.url != page.url %}
+              <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+            {% endif %}
+          {% endfor %}
         </ul>
-    </section>
-    {% endif %}
-    <!-- Images Section -->
-    {% if page.images %}
-    <section class="mt-6">
-        <h4 class="text-lg font-semibold text-gray-800">Images</h4>
+      </div>
+    </aside>
+
+    <!-- Main column -->
+    <main style="width:55%; text-align:left;">
+      <h1>{{ page.title }}</h1>
+      <p class="meta">
+        Published: {{ page.date | date: "%B %-d, %Y" }} |
+        Category: {{ page.category }}
+      </p>
+
+      {% if page.abstract %}
+      <section>
+        <h4>Abstract</h4>
+        <p>{{ page.abstract }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.keywords %}
+      <section>
+        <h4>Keywords</h4>
+        <ul>
+          {% for keyword in page.keywords %}
+          <li>{{ keyword }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {% if page.images %}
+      <section>
+        <h4>Images</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {% for image in page.images %}
-            <figure>
-                <img src="{{ image.url }}" alt="{{ image.alt }}" class="rounded-lg shadow-md">
-                {% if image.caption %}
-                <figcaption class="text-sm text-gray-600 mt-2">{{ image.caption }}</figcaption>
-                {% endif %}
-            </figure>
-            {% endfor %}
+          {% for image in page.images %}
+          <figure>
+            <img src="{{ image.url }}" alt="{{ image.alt }}">
+            {% if image.caption %}
+            <figcaption>{{ image.caption }}</figcaption>
+            {% endif %}
+          </figure>
+          {% endfor %}
         </div>
-    </section>
-    {% endif %}
-    <!-- Main Content -->
-    <div class="post-content mt-6">
+      </section>
+      {% endif %}
+
+      <!-- Your one-and-only Main Content -->
+      <section class="post-content mt-6">
         {{ content }}
-    </div>
-    <!-- References Section -->
-    {% if page.references %}
-    <section class="mt-6">
-        <h4 class="text-lg font-semibold text-gray-800">References</h4>
-        <ol class="list-decimal list-inside text-gray-700">
-            {% for reference in page.references %}
-            <li>{{ reference }}</li>
-            {% endfor %}
+      </section>
+
+      {% if page.references %}
+      <section>
+        <h4>References</h4>
+        <ol>
+          {% for ref in page.references %}
+          <li>{{ ref }}</li>
+          {% endfor %}
         </ol>
-    </section>
-    {% endif %}
-    <!-- Disqus Comments Section -->
-    <section id="disqus_thread" class="mt-10"></section>
-    <script>
-        var disqus_config = function () {
-            this.page.url = "{{ site.url }}{{ page.url }}";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = "{{ page.url }}";         // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            this.page.title = "{{ page.title }}";            // Optional: Add the page title
-            // this.disqus_developer = 1;                   // Remove or comment out this line for production
-        };
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://quantumutiverse.disqus.com/embed.js';  // Replace 'quantumutiverse' with your Disqus shortname
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>
-        Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
+      </section>
+      {% endif %}
+    </main>
+  </div>
+
+  <!-- Disqus comments -->
+  <section id="disqus_thread" class="mt-10"></section>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "{{ site.url }}{{ page.url }}";
+      this.page.identifier = "{{ page.url }}";
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://quantumutiverse.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head||d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view comments powered by Disqus.
+  </noscript>
 </article>

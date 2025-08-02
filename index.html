@@ -15,10 +15,9 @@ title: Home
     <aside class="col-span-2 bg-white p-6 rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-gray-800 mb-4">Table of Content</h3>
         <ul class="list-disc list-inside text-gray-700">
-            <!-- Add links to sections or categories -->
-            <li><a href="#" class="text-blue-600 hover:underline">Quantum Basics</a></li>
-            <li><a href="#" class="text-blue-600 hover:underline">Advanced Topics</a></li>
-            <li><a href="#" class="text-blue-600 hover:underline">Research Papers</a></li>
+            {% for post in site.posts %}
+                <li><a href="{{ post.url | relative_url }}" class="text-blue-600 hover:underline">{{ post.title }}</a></li>
+            {% endfor %}
         </ul>
     </aside>
 

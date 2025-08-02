@@ -5,9 +5,11 @@ date: 2025-07-20 11:30:00 -0700
 category: Astronomy
 ---
 
+
+
 Inline math example: $E = mc^2$
 
-![Wave Function Diagram](/assets/images/lesson-1-wave-function/song_dien_tu.jpg)
+![Wave Function Diagram]({{ site.baseurl }}/assets/images/lesson-1-wave-function/song_dien_tu.jpg)
 
 The exploration of Mars continues to captivate scientists and the public alike. With new missions like **Perseverance** and its *Ingenuity helicopter*, we are gaining unprecedented insights into the Red Planet's geology, atmosphere, and potential for past or present life.
 
