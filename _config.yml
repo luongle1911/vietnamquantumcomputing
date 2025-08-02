@@ -3,7 +3,7 @@ title: VietNam Quantum Computing Blog
 description: Explore the Quantum World.
 author: luongle1911
 email: lephuluong1911@gmail.com
-baseurl: "" # If your repo is 'science-blog', otherwise leave empty for user/org sites
+baseurl: "/vietnamquantumcomputing" # Set this to your repository name if your repo is NOT 'luongle1911.github.io'. If your repo IS 'luongle1911.github.io', set baseurl: "".
 url: "https://luongle1911.github.io" # Your GitHub Pages URL
 
 # Build settings
